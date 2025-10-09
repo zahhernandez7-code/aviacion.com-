@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Mayores Ventas en el Mundo Aeronáutico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sale-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sale-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .sale-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .rank {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 20px;
+            min-width: 60px;
+        }
+
+        .company-info h2 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .deal-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .sale-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 1.3rem;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .sale-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .rank {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+
+            .company-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 30px 15px;
+            }
+
+            .sale-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .sale-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✈️ Las Mayores Ventas en el Mundo Aeronáutico</h1>
+            <p class="subtitle">Los contratos más impresionantes de la historia de la aviación</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p>Descubre las transacciones comerciales más significativas que han marcado la industria aeronáutica mundial. Estos acuerdos históricos han transformado el sector y establecido nuevos récords.</p>
+            </div>
+
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class="rank">1</div>
+                    <div class="company-info">
+                        <h2>Boeing 737 MAX - Lion Air Group</h2>
+                        <span class="deal-type">Pedido de Aeronaves</span>
+                    </div>
+                </div>
+                <div class="sale-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Valor del Contrato</div>
+                        <div class="detail-value">$22.400 millones</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Número de Aeronaves</div>
+                        <div class="detail-value">230 unidades</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Año del Acuerdo</div>
+                        <div class="detail-value">2011</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Cliente</div>
+                        <div class="detail-value">Lion Air (Indonesia)</div>
+                    </div>
+                </div>
+                <div class="description">
+                    Este pedido histórico de Lion Air Group representa uno de los contratos más grandes en la historia de la aviación comercial. El acuerdo incluyó 201 Boeing 737 MAX 9 y 29 Boeing 737 MAX 10, consolidando a Lion Air como un jugador importante en el mercado asiático de bajo costo.
+                </div>
+            </div>
+
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class="rank">2</div>
+                    <div class="company-info">
+                        <h2>Airbus A320neo - IndiGo</h2>
+                        <span class="deal-type">Pedido de Aeronaves</span>
+                    </div>
+                </div>
+                <div class="sale-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Valor del Contrato</div>
+                        <div class="detail-value">$20.000 millones</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Número de Aeronaves</div>
+                        <div class="detail-value">180 unidades</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Año del Acuerdo</div>
+                        <div class="detail-value">2011</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Cliente</div>
+                        <div class="detail-value">IndiGo (India)</div>
+                    </div>
+                </div>
+                <div class="description">
+                    IndiGo, la aerolínea de bajo costo líder en India, realizó este pedido masivo de aviones A320neo, demostrando la confianza en el mercado indio y el crecimiento explosivo de la aviación en el subcontinente. Este contrato fue crucial para el programa A320neo de Airbus.
+                </div>
+            </div>
+
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class="rank">3</div>
+                    <div class="company-info">
+                        <h2>Boeing 787 Dreamliner - Emirates</h2>
+                        <span class="deal-type">Pedido de Aeronaves</span>
+                    </div>
+                </div>
+                <div class="sale-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Valor del Contrato</div>
+                        <div class="detail-value">$18.000 millones</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Número de Aeronaves</div>
+                        <div class="detail-value">40 unidades</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Año del Acuerdo</div>
+                        <div class="detail-value">2017</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Cliente</div>
+                        <div class="detail-value">Emirates (EAU)</div>
+                    </div>
+                </div>
+                <div class="description">
+                    Emirates sorprendió al sector con este pedido de 40 Boeing 787-10, el modelo más grande de la familia Dreamliner. Este acuerdo fue estratégico para diversificar su flota dominada por Airbus y aprovechar la eficiencia del 787 en rutas de largo alcance.
+                </div>
+            </div>
+
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class="rank">4</div>
+                    <div class="company-info">
+                        <h2>Airbus A380 - Emirates</h2>
+                        <span class="deal-type">Pedido de Aeronaves</span>
+                    </div>
+                </div>
+                <div class="sale-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Valor del Contrato</div>
+                        <div class="detail-value">$16.000 millones</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Número de Aeronaves</div>
+                        <div class="detail-value">36 unidades</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Año del Acuerdo</div>
+                        <div class="detail-value">2018</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Cliente</div>
+                        <div class="detail-value">Emirates (EAU)</div>
+                    </div>
+                </div>
+                <div class="description">
+                    Emirates, el mayor operador del A380 en el mundo, realizó este pedido que fue crucial para mantener vivo el programa del superjumbo. Sin embargo, el programa fue finalmente descontinuado en 2021. Emirates posee más de la mitad de todos los A380 producidos.
+                </div>
+            </div>
+
+            <div class="sale-card">
+                <div class="sale-header">
+                    <div class="rank">5</div>
+                    <div class="company-info">
+                        <h2>Boeing 737 - Southwest Airlines</h2>
+                        <span class="deal-type">Pedido de Aeronaves</span>
+                    </div>
+                </div>
+                <div class="sale-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Valor del Contrato</div>
+                        <div class="detail-value">$12.500 millones</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Número de Aeronaves</div>
+                        <div class="detail-value">150 unidades</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Año del Acuerdo</div>
+                        <div class="detail-value">2012</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Cliente</div>
+                        <div class="detail-value">Southwest (EE.UU.)</div>
+                    </div>
+                </div>
+                <div class="description">
+                    Southwest Airlines, conocida por operar exclusivamente aviones Boeing 737, realizó este pedido masivo de 737 MAX. La aerolínea ha sido uno de los clientes más leales de Boeing y este acuerdo reforzó su estrategia de flota única para optimizar costos operativos.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 - Información sobre las mayores ventas en el sector aeronáutico mundial</p>
+            <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9rem;">Los valores de los contratos están en precio de lista y pueden incluir opciones adicionales</p>
+        </footer>
+    </div>
+</body>
+</html>
