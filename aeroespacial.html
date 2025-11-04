@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Aeroespacial Animado</title>
+    <!-- Incluimos Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuente de Google: Exo 2 (moderna y tecnológica) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Aplicamos la fuente a todo el cuerpo */
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: #0c0a18; /* Un fondo espacial muy oscuro */
+            color: #e0e0e0;
+        }
+
+        /* Estilo para el título de la cabecera con gradiente */
+        .hero-title {
+            background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Contenedor del "cielo" de estrellas */
+        .starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        /* Estilo base de una estrella */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animación de parpadeo para las estrellas */
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Animación de "flotar" para el cohete */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .rocket-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Estilos para las animaciones de scroll */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- 1. Cabecera (Hero Section) -->
+    <header class="h-screen w-full relative flex items-center justify-center text-center p-4 overflow-hidden">
+        <!-- Contenedor de estrellas (se generarán con JS) -->
+        <div id="starfield" class="starfield"></div>
+        
+        <!-- Contenido de la cabecera -->
+        <div class="relative z-10 flex flex-col items-center">
+            
+            <!-- Cohete SVG Animado -->
+            <div class="rocket-float w-32 h-32 md:w-48 md:h-48 mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+                    <path fill="#e0e0e0" d="M100 25C100 25 125 50 125 75V125H75V75C75 50 100 25 100 25Z"/>
+                    <path fill="#c7c7c7" d="M75 125H125V150C125 163.807 113.807 175 100 175C86.1929 175 75 163.807 75 150V125Z"/>
+                    <path fill="#f472b6" d="M100 25L110 50H90L100 25Z"/>
+                    <path fill="#a78bfa" d="M125 75V125H150L175 100L150 75H125Z"/>
+                    <path fill="#a78bfa" d="M75 75V125H50L25 100L50 75H75Z"/>
+                    <path fill="url(#paint0_linear_1)" d="M75 150C75 163.807 86.1929 175 100 175C113.807 175 125 163.807 125 150H75Z"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_1" x1="100" y1="150" x2="100" y2="175" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#f59e0b"/>
+                        <stop offset="1" stop-color="#ef4444" stop-opacity="0.5"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-black uppercase mb-4 scroll-animate">
+                Mundo Aeroespacial
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto scroll-animate" style="transition-delay: 200ms;">
+                Un viaje animado por las fronteras de la ciencia, desde los cielos hasta las estrellas.
+            </p>
+            <a href="#intro" class="mt-12 px-8 py-3 bg-blue-600 text-white font-bold rounded-full text-lg shadow-lg shadow-blue-500/30 transform transition-transform hover:scale-105 active:scale-95 scroll-animate" style="transition-delay: 400ms;">
+                Comenzar Exploración
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. Sección Introducción -->
+    <section id="intro" class="container mx-auto px-6 py-24">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-animate">
+                ¿Qué es la <span class="text-cyan-400">Ingeniería Aeroespacial</span>?
+            </h2>
+            <p class="text-lg md:text-xl text-gray-400 leading-relaxed scroll-animate" style="transition-delay: 150ms;">
+                Es la rama de la ingeniería que estudia el diseño, desarrollo, construcción y prueba de aeronaves y naves espaciales. Se divide en dos grandes campos: la aeronáutica, que se ocupa de los vehículos que vuelan dentro de la atmósfera terrestre, y la astronáutica, que se enfoca en los que operan fuera de ella.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. Sección de Pilares (Cards) -->
+    <section class="py-24 bg-gray-950/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">Pilares de la Exploración</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Aeronáutica -->
+                <div class="bg-gray-800/60 p-8 rounded-2xl shadow-xl backdrop-blur-sm border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-cyan-500/20 scroll-animate">
+                    <div class="w-16 h-16 bg-cyan-500/20 text-cyan-300 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icono de Avión -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.875L6 12zM6 12l10.875-3.75M6 12l10.875 3.75" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Aeronáutica</h3>
+                    <p class="text-gray-400">Desde los aviones comerciales que conectan el mundo hasta los drones de última generación. La aeronáutica busca hacer el vuelo más rápido, seguro y eficiente.</p>
+                </div>
+
+                <!-- Card 2: Astronáutica -->
+                <div class="bg-gray-800/60 p-8 rounded-2xl shadow-xl backdrop-blur-sm border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-purple-500/20 scroll-animate" style="transition-delay: 150ms;">
+                    <div class="w-16 h-16 bg-purple-500/20 text-purple-300 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icono de Satélite -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.192 11.06a1.5 1.5 0 011.06 1.06L16 17l-4 1-1.94-3.879a1.5 1.5 0 011.06-1.061l3.072-1.002zM16 17l-4 1-1.94-3.879a1.5 1.5 0 011.06-1.061l3.072-1.002zM16 17l.94-1.879a1.5 1.5 0 012.121 2.121L16 17z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 8.25a7.5 7.5 0 11.236 13.565 7.5 7.5 0 01-.236-13.565z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Astronáutica</h3>
+                    <p class="text-gray-400">El diseño de cohetes, satélites, estaciones espaciales y sondas. La astronáutica nos permite explorar el sistema solar y más allá, y nos da servicios clave como el GPS.</p>
+                </div>
+
+                <!-- Card 3: Exploración -->
+                <div class="bg-gray-800/60 p-8 rounded-2xl shadow-xl backdrop-blur-sm border border-gray-700/50 transform transition-transform hover:scale-105 hover:shadow-pink-500/20 scroll-animate" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 bg-pink-500/20 text-pink-300 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icono de Planeta -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 01-1.161.886l-.143.048a1.107 1.107 0 00-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 01-1.652.928l-.679-.906a1.125 1.125 0 00-1.906.172L4.5 15.75l-.64.64a.956.956 0 01-1.352 0l-.64-.64a.956.956 0 010-1.352l.64-.64a.956.956 0 011.352 0l.64.64a.956.956 0 010 1.352l-.64.64a.956.956 0 01-1.352 0l-.64-.64a.956.956 0 010-1.352l.64-.64L3 12l.423-1.059a.956.956 0 011.652-.928l.679.906c.662.88.415 2.161-.527 2.565l-1.036.777c-.89.67-1.974.884-3.004.647L.5 13.03V12c0-4.142 3.358-7.5 7.5-7.5h.036A7.486 7.486 0 0112 4.5c0 4.142-3.358 7.5-7.5 7.5V15l.348.116c1.03.345 1.96.982 2.599 1.833l.06.09a.956.956 0 01-1.352 1.352l-.09-.06a4.5 4.5 0 00-5.023-1.617l-.491-.164A7.488 7.488 0 010 12c0-4.142 3.358-7.5 7.5-7.5h.036A7.486 7.486 0 0112 4.5c0 4.142-3.358 7.5-7.5 7.5v.03c0 .334-.148.65-.405.864l-1.068.89c-.442.369-.535 1.01-.216 1.49l.51.766a2.25 2.25 0 011.161.886l.143.048a1.107 1.107 0 00.57 1.664c-.369.555-.169 1.307.427 1.605L9 16.875l-.423-1.059a.956.956 0 011.652-.928l.679.906c.662.88.415 2.161-.527 2.565l-1.036.777c-.89.67-1.974.884-3.004.647L.5 19.03V18c0-4.142 3.358-7.5 7.5-7.5h.036A7.486 7.486 0 0112 10.5c0 4.142-3.358 7.5-7.5 7.5V21l.348.116c1.03.345 1.96.982 2.599 1.833l.06.09a.956.956 0 01-1.352 1.352l-.09-.06a4.5 4.5 0 00-5.023-1.617l-.491-.164A7.488 7.488 0 010 18c0-4.142 3.358-7.5 7.5-7.5h.036A7.486 7.486 0 0112 10.5c0 4.142-3.358 7.5-7.5 7.5v.03c0 .334-.148.65-.405.864l-1.068.89c-.442.369-.535 1.01-.216 1.49l.51.766a2.25 2.25 0 011.161.886l.143.048a1.107 1.107 0 00.57 1.664c-.369.555-.169 1.307.427 1.605L9 21l-.423-1.059a.956.956 0 011.652-.928l.679.906c.662.88.415 2.161-.527 2.565l-1.036.777c-.89.67-1.974.884-3.004.647L.5 21v-1.97c0-4.142 3.358-7.5 7.5-7.5h.036A7.486 7.486 0 0112 10.5c0 4.142-3.358 7.5-7.5 7.5z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">El Futuro</h3>
+                    <p class="text-gray-400">La próxima gran era. Misiones tripuladas a Marte, turismo espacial, bases lunares y la búsqueda de vida más allá de la Tierra. La exploración apenas comienza.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. Sección de Hitos (Timeline) -->
+    <section class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 scroll-animate">Hitos de la Humanidad</h2>
+            
+            <!-- Hito 1: Apolo 11 -->
+            <div class="grid md:grid-cols-2 gap-10 items-center mb-20">
+                <div class="scroll-animate">
+                    <h3 class="text-3xl font-bold mb-4 text-cyan-300">1969: "Un pequeño paso..."</h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">La misión Apolo 11 de la NASA marcó la primera vez que los humanos caminaron sobre otro cuerpo celeste. Neil Armstrong y Buzz Aldrin se convirtieron en iconos mundiales, cumpliendo el desafío de una década y cambiando nuestra perspectiva del universo para siempre.</p>
+                </div>
+                <div class="scroll-animate" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/600x400/0c0a18/e0e0e0?text=Aterrizaje+Lunar" alt="Aterrizaje Lunar Apolo 11" class="rounded-lg shadow-2xl w-full h-auto object-cover border-4 border-gray-700">
+                </div>
+            </div>
+
+            <!-- Hito 2: ISS -->
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="md:order-2 scroll-animate">
+                    <h3 class="text-3xl font-bold mb-4 text-purple-300">1998-Presente: Colaboración Orbital</h3>
+                    <p class="text-lg text-gray-300 leading-relaxed">La Estación Espacial Internacional (ISS) es el objeto más grande construido por el hombre en el espacio. Es un laboratorio de microgravedad y un símbolo de cooperación internacional, habitado continuamente por astronautas de todo el mundo desde el año 2000.</p>
+                </div>
+                <div class="md:order-1 scroll-animate" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/600x400/0c0a18/e0e0e0?text=Estación+Espacial" alt="Estación Espacial Internacional" class="rounded-lg shadow-2xl w-full h-auto object-cover border-4 border-gray-700">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Footer -->
+    <footer class="py-16 text-center bg-gray-950/70 border-t border-gray-800">
+        <p class="text-gray-500">Página web animada creada con fines demostrativos.</p>
+        <p class="text-gray-400 mt-2">Explorando el cosmos, un píxel a la vez.</p>
+    </footer>
+
+
+    <script>
+        // --- Generador de Estrellas ---
+        function createStars() {
+            const starfield = document.getElementById('starfield');
+            const numStars = 200; // Número de estrellas a crear
+
+            for (let i = 0; i < numStars; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                
+                // Tamaño aleatorio (1 a 3px)
+                let size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // Posición aleatoria
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                
+                // Retraso de animación aleatorio
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's'; // Duración entre 2s y 4s
+
+                starfield.appendChild(star);
+            }
+        }
+        
+        // --- Observador de Scroll para Animaciones ---
+        function setupScrollAnimations() {
+            const targets = document.querySelectorAll('.scroll-animate');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Opcional: dejar de observar el elemento una vez animado
+                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Opcional: remover la clase si sale de vista (para re-animar)
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Activar cuando el 10% del elemento sea visible
+            });
+
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        }
+
+        // --- Iniciar funciones cuando la página cargue ---
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            setupScrollAnimations();
+        });
+
+    </script>
+
+</body>
+</html>
